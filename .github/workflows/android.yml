@@ -54,6 +54,8 @@ jobs:
           VERSION_NAME="1.0.${VERSION_CODE}"
           echo "VERSION_CODE=$VERSION_CODE" >> $GITHUB_ENV
           echo "VERSION_NAME=$VERSION_NAME" >> $GITHUB_ENV
+          echo "VERSION_CODE=$VERSION_CODE"
+          echo "VERSION_NAME=$VERSION_NAME"
 
       - name: 🟢 Set up Node.js
         uses: actions/setup-node@v4
@@ -122,11 +124,11 @@ jobs:
         with:
           name: app-release.apk
 
-      - name: 🔐 Write Firebase Credentials
-        run: echo "${{ secrets.GOOGLE_APPLICATION_KEY }}" > $HOME/firebase.json
+      # - name: 🔐 Write Firebase Credentials
+      #   run: echo "${{ secrets.GOOGLE_APPLICATION_KEY }}" > $HOME/firebase.json
 
-      - name: 🔐 Set GOOGLE_APPLICATION_KEY
-        run: echo "GOOGLE_APPLICATION_KEY=$HOME/firebase.json" >> $GITHUB_ENV
+      # - name: 🔐 Set GOOGLE_APPLICATION_KEY
+      #   run: echo "GOOGLE_APPLICATION_KEY=$HOME/firebase.json" >> $GITHUB_ENV
 
       - name: 🚀 Install Firebase CLI
         run: npm install -g firebase-tools
